@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>NequiBotGV - Generador</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -13,7 +13,7 @@
       margin: 0;
       padding: 0;
       background: #000;  
-      font-family: 'Inter', sans-serif;
+      font-family: 'Manrope', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -48,7 +48,7 @@
       font-size: 16px;
       background: #222;
       color: #fff;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Manrope', sans-serif;
     }
     .boton {
       margin-top: 10px;
@@ -57,7 +57,7 @@
       font-size: 16px;
       border: none;
       border-radius: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Manrope', sans-serif;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.4s ease;
@@ -92,7 +92,7 @@
       color: #2E1A47;
       font-weight: 400;
       text-align: left;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Manrope', sans-serif;
       outline: none;
       pointer-events: none;
       white-space: nowrap;
@@ -136,7 +136,7 @@
       color: #fff;
       border: none;
       border-radius: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Manrope', sans-serif;
       font-weight: bold;
       z-index: 9999;
     }
@@ -170,11 +170,10 @@
   <input type="text" id="referencia" class="input-overlay" readonly>
 </div>
 <button id="verPantallaCompleta">Ver en Pantalla Completa</button>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>   
+<script src=" https://html2canvas.hertzen.com/dist/html2canvas.min.js "></script>   
 <script>
 let claveAcceso = "2025142205";
 const claveAdmin = "1395";
-
 // Configuración de tamaños de fuente (EDITAR AQUÍ)
 const tamanosFuente = {
   valor: 15,    // Tamaño para Valor
@@ -182,7 +181,6 @@ const tamanosFuente = {
   fecha: 15,    // Tamaño para Fecha
   referencia: 15 // Tamaño para Referencia
 };
-
 // Aplicar tamaños de fuente configurados
 function aplicarTamanos() {
   document.getElementById('valor').style.setProperty('--font-size', `${tamanosFuente.valor}px`);
@@ -190,12 +188,10 @@ function aplicarTamanos() {
   document.getElementById('fecha').style.setProperty('--font-size', `${tamanosFuente.fecha}px`);
   document.getElementById('referencia').style.setProperty('--font-size', `${tamanosFuente.referencia}px`);
 }
-
 // Eventos principales
 document.getElementById('whatsapp').addEventListener('click', () => {
   window.open('https://wa.me/573178793834?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20la%20clave%20de%20NequiBotGV.', '_blank');
 });
-
 document.getElementById('clave-ingreso').addEventListener('click', () => {
   const clave = prompt("Ingrese la clave de acceso:");
   if (clave === claveAdmin) {
@@ -207,7 +203,6 @@ document.getElementById('clave-ingreso').addEventListener('click', () => {
     alert("Clave incorrecta. Acceso denegado.");
   }
 });
-
 document.getElementById('cambiar-clave-boton').addEventListener('click', () => {
   const clave = prompt("Ingrese la clave de administrador:");
   if (clave === claveAdmin) {
@@ -217,14 +212,12 @@ document.getElementById('cambiar-clave-boton').addEventListener('click', () => {
     alert("Clave de administrador incorrecta.");
   }
 });
-
 function mostrarFormulario() {
   document.getElementById('contenido-oculto').style.display = 'block';
   document.getElementById('whatsapp').style.display = 'none';
   document.getElementById('clave-ingreso').style.display = 'none';
   document.getElementById('cambiar-clave-boton').style.display = 'none';
 }
-
 document.getElementById('guardar-nueva-clave').addEventListener('click', () => {
   const nueva = document.getElementById('nueva-clave').value.trim();
   if (nueva) {
@@ -233,13 +226,10 @@ document.getElementById('guardar-nueva-clave').addEventListener('click', () => {
     document.getElementById('nueva-clave').value = "";
   }
 });
-
 document.getElementById('generar').addEventListener('click', () => {
   if (!validarEntradas()) return;
-  
   // Aplicar tamaños antes de generar
   aplicarTamanos();
-
   const container = document.getElementById('captura');
   const img = document.querySelector('#captura img');   
   // Ajustar escala según el tamaño de la pantalla
@@ -247,27 +237,22 @@ document.getElementById('generar').addEventListener('click', () => {
   container.style.setProperty('--escala', escala);
   document.getElementById('pantalla').style.display = 'none';
   container.style.display = 'block';
-  
   // Asignar valores a los campos superpuestos
   document.getElementById('valor').value = formatValor(document.getElementById('input-valor').value);
   document.getElementById('nequi').value = document.getElementById('input-nequi').value;
   generarFecha();
   generarReferencia();
   const formato = document.getElementById('formato').value;
-  
   // Verificar si la imagen de fondo está completamente cargada
   if (!img.complete || !img.naturalWidth) {
     alert("La imagen de fondo no se ha cargado completamente. Inténtalo nuevamente.");
     return;
   }
-  
   // Mostrar el botón de pantalla completa
   document.getElementById('verPantallaCompleta').style.display = 'block';
-  
   // Descargar automáticamente el comprobante
   descargarComprobante(formato);
 });
-
 document.getElementById('verPantallaCompleta').addEventListener('click', () => {
   const contenedor = document.getElementById('captura');
   const btn = document.getElementById('verPantallaCompleta');
@@ -294,7 +279,6 @@ document.getElementById('verPantallaCompleta').addEventListener('click', () => {
     btn.textContent = "Ver en Pantalla Completa";
   }
 });
-
 document.addEventListener('fullscreenchange', () => {
   const contenedor = document.getElementById('captura');
   const btn = document.getElementById('verPantallaCompleta');
@@ -303,7 +287,6 @@ document.addEventListener('fullscreenchange', () => {
     btn.textContent = "Ver en Pantalla Completa";
   }
 });
-
 // Validaciones y utilidades
 function validarEntradas() {
   const valor = document.getElementById('input-valor').value.trim();
@@ -322,7 +305,6 @@ function validarEntradas() {
   }
   return true;
 }
-
 function generarFecha() {
   const fecha = new Date();
   const opts = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -332,17 +314,14 @@ function generarFecha() {
   h = h % 12 || 12;
   document.getElementById('fecha').innerHTML = `${f} a las ${h}:${m} ${ampm}`;
 }
-
 function generarReferencia() {
   document.getElementById('referencia').value = 'M' + Math.floor(1e7 + Math.random() * 9e7);
 }
-
 function formatValor(valor) {
   valor = valor.replace(/\D/g, '');
   if (!valor) return "$ 0,00";
   return `$ ${valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.')},00`;
 }
-
 function descargarComprobante(formato) {
   const img = document.querySelector('#captura img');
   if (!img.complete || !img.naturalWidth) {
